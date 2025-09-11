@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
+const transactionRoutes = require("./routes/transaction.routes")
 const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
   res.send("Server is Running!");
 });
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/transaction", transactionRoutes);
 
 // Error Route Middleware
 app.use(errorHandler);
