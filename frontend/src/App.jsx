@@ -1,5 +1,19 @@
+import { Outlet } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
+import { useEffect } from "react";
+
 const App = () => {
-  return <div>App</div>;
+  const { isAuthenticated } = useAuth();
+  useEffect(() => {
+    if (!isAuthenticated) {
+      window.location.href = "/login";
+    }
+  }, []);
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
 };
 
 export default App;
