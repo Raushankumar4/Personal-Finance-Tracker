@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const authRoutes = require("./routes/auth.routes");
+const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
 
@@ -17,5 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Server is Running!");
 });
+app.use("/api/v1/auth", authRoutes);
+
+// Error Route Middleware
+app.use(errorHandler);
 
 module.exports = app;
