@@ -11,7 +11,8 @@ export const useAddTransaction = () => {
 export const useUpdateTransaction = () => {
   return useMutation({
     mutationKey: ["tansaction", "update"],
-    mutationFn: transactionApi.updateTransaction,
+    mutationFn: ({ transactionId, transactionData }) =>
+      transactionApi.updateTransaction(transactionId, transactionData),
   });
 };
 export const useDeleteTransaction = () => {
